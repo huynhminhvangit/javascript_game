@@ -34,6 +34,7 @@ window.addEventListener('load', function () {
       this.height = 3;
       this.speed = 3;
       this.markedForDeletion = false;
+      this.image = document.getElementById('projectile');
     }
 
     update () {
@@ -42,8 +43,9 @@ window.addEventListener('load', function () {
     }
 
     draw (context) {
-      context.fillStyle = 'yellow';
-      context.fillRect(this.x, this.y, this.width, this.height);
+      // context.fillStyle = 'yellow';
+      if (this.game.debug) context.strokeRect(this.x, this.y, this.width, this.height);
+      context.drawImage(this.image, this.x, this.y);
     }
   }
 
@@ -264,7 +266,7 @@ window.addEventListener('load', function () {
     constructor(game) {
       this.game = game;
       this.fontSize = 25;
-      this.fontFamily = 'Helvatica';
+      this.fontFamily = 'Bangers';
       this.color = 'white';
     }
 
