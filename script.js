@@ -13,6 +13,8 @@ window.addEventListener('load', function () {
           this.game.keys.push(e.key);
         } else if (e.key === ' ') {
           this.game.player.shootTop();
+        } else if(e.key === 'd') {
+          this.game.debug = !this.game.debug;
         }
       });
       window.addEventListener('keyup', e => {
@@ -87,8 +89,8 @@ window.addEventListener('load', function () {
     }
 
     draw (context) {
-      context.fillStyle = 'black';
-      context.fillRect(this.x, this.y, this.width, this.height);
+      // context.fillStyle = 'black';
+      if(this.game.debug) context.strokeRect(this.x, this.y, this.width, this.height);
       context.drawImage(this.image, this.frameX * this.width, this.frameY * this.height, this.width, this.height, this.x, this.y, this.width, this.height);
       // handle projectiles
       this.projectiles.forEach(projectile => {
@@ -256,7 +258,10 @@ window.addEventListener('load', function () {
       this.winningScore = 10;
       this.gameTime = 0;
       this.timeLimit = 5000;
+      // speed layer and background
       this.speed = 1;
+      // debug mode
+      this.debug = true;
     }
 
     update (deltaTime) {
