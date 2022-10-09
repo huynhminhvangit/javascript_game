@@ -43,3 +43,7 @@
 #drone {
   display: none;
 }
+
+#smokeExplosion, #fireExplosion {
+  display: none;
+}
