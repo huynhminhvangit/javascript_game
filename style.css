@@ -22,3 +22,7 @@
 #player {
   display: none;
 }
+
+#angler1, #angler2, #lucky{
+  display: none;
+}
