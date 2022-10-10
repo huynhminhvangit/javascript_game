@@ -423,6 +423,11 @@ window.addEventListener('load', function () {
       context.font = this.fontSize + 'px ' + this.fontFamily;
       // score
       context.fillText('Score: ' + this.game.score, 20, 40);
+
+      context.font = this.fontSize + 'px ' + this.fontFamily;
+      // title
+      context.fillText('Designed by Vang Huynh', this.game.width - this.game.width * 0.5, 20);
+
       // timer
       const formattedTime = (this.game.gameTime * 0.001).toFixed(1);
       context.fillText('Timer: ' + formattedTime, 20, 100);
@@ -472,9 +477,9 @@ window.addEventListener('load', function () {
       this.ammoInterval = 350;
       this.gameOver = false;
       this.score = 0;
-      this.winningScore = 80;
+      this.winningScore = 200;
       this.gameTime = 0;
-      this.timeLimit = 30000;
+      this.timeLimit = 60000;
       // speed layer and background
       this.speed = 1;
       // debug mode
