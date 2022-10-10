@@ -363,9 +363,11 @@ window.addEventListener('load', function () {
       this.interval = 1000 / this.fps;
       this.markedForDeletion = false;
       this.maxFrame = 8;
+      this.sound = new Audio();
     }
 
     update (deltaTime) {
+      if(this.frameX === 0) this.sound.play();
       this.x -= this.game.speed;
       if (this.timer > this.interval) {
         this.frameX++;
@@ -381,12 +383,17 @@ window.addEventListener('load', function () {
     draw (context) {
       context.drawImage(this.image, this.frameX * this.spriteWidth, 0, this.spriteWidth, this.spriteHeight, this.x, this.y, this.width, this.height);
     }
+
+    playSound() {
+      this.sound.play();
+    }
   }
 
   class SmokeExplosion extends Explosion {
     constructor(game, x, y) {
       super(game, x, y);
       this.image = document.getElementById('smokeExplosion');
+      this.sound.src = 'assets/audios/smokeExplosion.wav';
     }
   }
 
@@ -394,6 +401,7 @@ window.addEventListener('load', function () {
     constructor(game, x, y) {
       super(game, x, y);
       this.image = document.getElementById('fireExplosion');
+      this.sound.src = 'assets/audios/fireExplosion.wav';
     }
   }
 
