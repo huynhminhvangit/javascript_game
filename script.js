@@ -35,6 +35,8 @@ window.addEventListener('load', function () {
       this.speed = 3;
       this.markedForDeletion = false;
       this.image = document.getElementById('projectile');
+      this.sound = new Audio();
+      this.sound.src = 'assets/audios/laseShoot.wav';
     }
 
     update () {
@@ -46,6 +48,10 @@ window.addEventListener('load', function () {
       // context.fillStyle = 'yellow';
       if (this.game.debug) context.strokeRect(this.x, this.y, this.width, this.height);
       context.drawImage(this.image, this.x, this.y);
+    }
+
+    playSound() {
+      this.sound.play();
     }
   }
 
@@ -162,7 +168,9 @@ window.addEventListener('load', function () {
 
     shootTop () {
       if (this.game.ammo > 0) {
-        this.projectiles.push(new Projectile(this.game, this.x + 80, this.y + 30));
+        const p = new Projectile(this.game, this.x + 80, this.y + 30);
+        p.playSound();
+        this.projectiles.push(p);
         this.game.ammo--;
       }
       if (this.powerUp) {
